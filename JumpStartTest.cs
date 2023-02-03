@@ -35,7 +35,6 @@ public class JumpStartTest
         Percy.Snapshot(_driver, "Login");
     }
 
-    // TODO: test method including asserts for acceptance criteria -- just copy existing attributes
     [TestMethod]
     public void VerifyFunctionalTest()
     {
@@ -57,9 +56,22 @@ public class JumpStartTest
         Assert.AreEqual("rgba(51, 51, 51, 1)", tdElColor);
         Assert.AreEqual("rgba(0, 0, 0, 0)", tdElBackgroundColor);
 
-        // think visual testing - how the element UI is going to change - another example with the h4
+        var h4El = _driver.FindElement(By.CssSelector(".container .row h4"));
+        var h4ElFontSize = h4El.GetCssValue("font-size");
+        var h4ElMarginTop = h4El.GetCssValue("margin-top");
+        var h4ElMarginBottom = h4El.GetCssValue("margin-bottom");
+        var h4ElFontFamily = h4El.GetCssValue("font-family");
+        var h4ElFontWeight = h4El.GetCssValue("font-weight");
+        var h4ElLineHeight = h4El.GetCssValue("line-height");
+        var h4ElColor = h4El.GetCssValue("color");
 
-        // font-size: 18px; margin-top: 10px; margin - bottom: 10px;font-family: inherit; font - weight: 500; line - height: 1.1; color: inherit
+        Assert.AreEqual("18px", h4ElFontSize);
+        Assert.AreEqual("10px", h4ElMarginTop);
+        Assert.AreEqual("10px", h4ElMarginBottom);
+        Assert.AreEqual("\"Open Sans\"", h4ElFontFamily);
+        Assert.AreEqual("500", h4ElFontWeight);
+        Assert.AreEqual("19.8px", h4ElLineHeight);
+        Assert.AreEqual("rgba(51, 51, 51, 1)", h4ElColor);
     }
 
     [TestCleanup]
