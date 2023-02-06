@@ -16,7 +16,6 @@ public class JumpStartTest
     public void Setup()
     {
         _driver = ChromeSession();
-        // TODO: add implicit wait 5 seconds
     }
 
     [TestMethod]
