@@ -19,10 +19,13 @@ public class JumpStartTest
     }
 
     [TestMethod]
-    public void Verify()
+    public void VerifyUsingUIVisualAutomation()
     {
         _driver.Navigate().GoToUrl("http://localhost:8080/customers");
         Percy.Snapshot(_driver, "Customers");
+
+        _driver.FindElement(By.CssSelector("a[href='/customers/1/orders']")).Click();
+        Percy.Snapshot(_driver, "Order by Customers");
 
         _driver.Navigate().GoToUrl("http://localhost:8080/orders");
         Percy.Snapshot(_driver, "Orders");
@@ -35,7 +38,7 @@ public class JumpStartTest
     }
 
     [TestMethod]
-    public void VerifyFunctionalTest()
+    public void VerifyUsingFunctionalTest()
     {
         _driver.Navigate().GoToUrl("http://localhost:8080/customers");
         _driver.FindElement(By.CssSelector("a[href='/customers/1/orders']")).Click();
